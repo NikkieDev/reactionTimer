@@ -1,8 +1,14 @@
 <template>
-    <p>Your reaction time was {{ totalScore }} ms!</p>
-    <div v-if="showScoreSubmit" style="margin-top: 5.5vw">
-        <input type="text" class="login-input" v-model="username" placeholder="Enter your name" maxlength="12" style="margin-right: 15px;" required>
-        <button class="button" @click="submitScore">Submit</button>
+    <div v-if="totalScore > 50">
+        <p>Your reaction time was {{ totalScore }} ms!</p>
+        <div v-if="showScoreSubmit" style="margin-top: 5.5vw">
+            <input type="text" class="login-input" v-model="username" placeholder="Enter your name" maxlength="12" style="margin-right: 15px;" required>
+            <button class="button" @click="submitScore">Submit</button>
+        </div>
+    </div>
+    <div v-else>
+        <p>Reaction time invalid!</p>
+        <p>Don't spam click :)</p>
     </div>
 </template>
 
@@ -15,7 +21,8 @@ export default {
     data() {
         return {
             showScoreSubmit: true,
-            username: '',
+            username: 'Guest',
+            totalScore: this.totalScore,
         }
     },
     methods: {

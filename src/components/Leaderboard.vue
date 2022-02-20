@@ -46,8 +46,6 @@ export default {
             .then((response) => {
 				this.scoreBoardList = response.data;
                 console.log("Fetched scoreboard");
-
-                this.scoreBoardList.split('[]');
 			}).catch((error) => {
 				console.log(error);
 			});
